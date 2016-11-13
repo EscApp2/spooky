@@ -13,8 +13,9 @@ app.get('/', function(request, response) {
 });
 
 app.get('/apps/', function(request, response) {
+  response.send('1234');
   response.send(echo(request));
-  
+  response.send('123');
   
 });
 
