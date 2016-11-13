@@ -4,7 +4,7 @@
   "dependencies": {
     "express": "3.1.x",
 	"casperjs": "^1.1.3",
-    "phantomjs-prebuilt": "2.1.1",
+    "phantomjs-prebuilt": "~2.1.7",
     "spooky": "^0.2.5"
   },
   "engines": {
