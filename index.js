@@ -161,6 +161,11 @@ function getDomSpooky(url, func){
 							//return {"a":"a","b":"b"}; //d1.file_;
 							return d1.file_;
 						}
+						GET_DOM.getBitcoinGraphData2 = function(){
+							//return {"a":"a","b":"b"}; //d1.file_;
+							return {"3":d3.file_ , "4":d4.file_};
+						}
+						
 						
 						if(!GET_DOM.hasOwnProperty(func)){
 							func = "title";
