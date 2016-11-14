@@ -28,7 +28,7 @@ app.get('/apps/', function(request, response) {
 		
 		var query_param = GLOBALS['url']['query'];
 		
-		console.log(query_param);
+		//console.log(query_param);
 		
 		if(query_param["app_id"] == "get_dom" ){
 			
@@ -117,8 +117,9 @@ function getDomSpooky(url, func){
 				//spooky_lib: __dirname+'/../',
 			 },
 			 casper: {
-				logLevel: 'debug',
-				verbose: true
+				//logLevel: 'debug',
+				//verbose: true
+				verbose: false
 			}
 		}, function (err) {
 			
@@ -179,10 +180,8 @@ function getDomSpooky(url, func){
 		});
 		
 		spooky.on('page.loaded', function (browser_page_response) {
-			console.log('on browser_page_response');
-			
-			console.log(browser_page_response);
-			
+			//console.log('on browser_page_response');
+			//console.log(browser_page_response);
 			BodyContentCallback("body_content",browser_page_response);
 		});
 		
@@ -227,6 +226,9 @@ function BodyContent(){
 	
 	//GLOBALS['response'].setHeader('Content-Type', contentTypes['html']);
 	//GLOBALS['response'].setHeader('Cache-Control', 'no-cache, no-store');
+	
+	
+	
 	GLOBALS['response'].status(200);
 	
 	let content = "";
@@ -239,7 +241,15 @@ function BodyContent(){
 		html_template
 	);
 	
-	GLOBALS['response'].send(content); // only once
+	
+	var query_param = GLOBALS['url']['query'];
+	if(query_param['header'] == "json"){
+		GLOBALS['response'].json(content);
+	}else{
+		GLOBALS['response'].send(content); // only once
+	}
+	
+	
 	
 }
 
