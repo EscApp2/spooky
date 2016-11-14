@@ -235,17 +235,26 @@ function BodyContent(){
 	//let html_template = "<html><head></head><body>#body_content#</body></html>";
 	let html_template = "#body_content#";
 	
-	content = PHP.str_replace(
-		PHP.array_keys(GLOBALS['body']['parts']),
-		PHP.array_values(GLOBALS['body']['parts']),
-		html_template
-	);
+	
 	
 	
 	var query_param = GLOBALS['url']['query'];
 	if(query_param['header'] == "json"){
+		
+		content = {};
+		PHP.foreach(GLOBALS['body']['parts'],function(ind, val){
+			var key = PHP.str_replace("#","",ind);
+			content[key] = val;
+		});
 		GLOBALS['response'].json(content);
+	
 	}else{
+		content = PHP.str_replace(
+			PHP.array_keys(GLOBALS['body']['parts']),
+			PHP.array_values(GLOBALS['body']['parts']),
+			html_template
+		);
+		
 		GLOBALS['response'].send(content); // only once
 	}
 	
