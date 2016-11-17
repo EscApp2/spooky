@@ -188,6 +188,7 @@ function getDomSpooky(url, func){
 			//console.log('on browser_page_response');
 			//console.log(browser_page_response);
 			BodyContentCallback("body_content",browser_page_response);
+			spooky.destroy();
 		});
 		
 		// Uncomment this block to see all of the things Casper has to say.
@@ -212,6 +213,8 @@ function getDomSpooky(url, func){
 				console.log(log.message.replace(/ \- .*/, ''));
 			}
 		});
+		
+		
 		return true;
 }
 
