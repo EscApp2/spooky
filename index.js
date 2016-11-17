@@ -189,6 +189,7 @@ function getDomSpooky(url, func){
 			//console.log(browser_page_response);
 			BodyContentCallback("body_content",browser_page_response);
 			spooky.destroy();
+			//111111
 		});
 		
 		// Uncomment this block to see all of the things Casper has to say.
